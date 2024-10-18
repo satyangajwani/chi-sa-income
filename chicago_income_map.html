@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8820d69acb1bf077f5bb6365b9026287 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_8820d69acb1bf077f5bb6365b9026287" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8820d69acb1bf077f5bb6365b9026287 = L.map(
+                "map_8820d69acb1bf077f5bb6365b9026287",
+                {
+                    center: [41.8781, -87.6298],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 9,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_26b925be81ec2a847a89c69ea8ef2dda = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+    var color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4 = {};
+
+    
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.color = d3.scale.threshold()
+              .domain([70000.0, 70180.36072144289, 70360.72144288577, 70541.08216432866, 70721.44288577154, 70901.80360721443, 71082.16432865731, 71262.5250501002, 71442.8857715431, 71623.24649298597, 71803.60721442886, 71983.96793587174, 72164.32865731463, 72344.68937875751, 72525.0501002004, 72705.41082164328, 72885.77154308617, 73066.13226452906, 73246.49298597194, 73426.85370741483, 73607.21442885771, 73787.5751503006, 73967.93587174348, 74148.29659318637, 74328.65731462926, 74509.01803607214, 74689.37875751503, 74869.73947895791, 75050.1002004008, 75230.46092184368, 75410.82164328657, 75591.18236472947, 75771.54308617234, 75951.90380761524, 76132.26452905811, 76312.625250501, 76492.98597194388, 76673.34669338677, 76853.70741482967, 77034.06813627254, 77214.42885771544, 77394.78957915831, 77575.1503006012, 77755.51102204408, 77935.87174348698, 78116.23246492985, 78296.59318637275, 78476.95390781562, 78657.31462925852, 78837.67535070141, 79018.03607214428, 79198.39679358718, 79378.75751503005, 79559.11823647295, 79739.47895791582, 79919.83967935872, 80100.20040080161, 80280.56112224449, 80460.92184368738, 80641.28256513026, 80821.64328657315, 81002.00400801603, 81182.36472945892, 81362.72545090181, 81543.08617234469, 81723.44689378758, 81903.80761523046, 82084.16833667335, 82264.52905811623, 82444.88977955912, 82625.25050100201, 82805.61122244489, 82985.97194388778, 83166.33266533066, 83346.69338677355, 83527.05410821643, 83707.41482965932, 83887.77555110221, 84068.13627254509, 84248.49699398798, 84428.85771543086, 84609.21843687375, 84789.57915831663, 84969.93987975952, 85150.30060120241, 85330.66132264529, 85511.02204408818, 85691.38276553106, 85871.74348697395, 86052.10420841683, 86232.46492985972, 86412.82565130261, 86593.18637274549, 86773.54709418837, 86953.90781563126, 87134.26853707415, 87314.62925851703, 87494.98997995992, 87675.35070140281, 87855.71142284569, 88036.07214428857, 88216.43286573146, 88396.79358717435, 88577.15430861723, 88757.51503006012, 88937.875751503, 89118.2364729459, 89298.59719438877, 89478.95791583166, 89659.31863727455, 89839.67935871743, 90020.04008016032, 90200.4008016032, 90380.7615230461, 90561.12224448897, 90741.48296593186, 90921.84368737476, 91102.20440881763, 91282.56513026053, 91462.9258517034, 91643.2865731463, 91823.64729458917, 92004.00801603206, 92184.36873747496, 92364.72945891783, 92545.09018036073, 92725.4509018036, 92905.8116232465, 93086.17234468937, 93266.53306613227, 93446.89378757516, 93627.25450901804, 93807.61523046091, 93987.9759519038, 94168.3366733467, 94348.69739478957, 94529.05811623247, 94709.41883767536, 94889.77955911824, 95070.14028056111, 95250.501002004, 95430.8617234469, 95611.22244488978, 95791.58316633267, 95971.94388777556, 96152.30460921844, 96332.66533066132, 96513.02605210421, 96693.3867735471, 96873.74749498998, 97054.10821643287, 97234.46893787575, 97414.82965931864, 97595.19038076152, 97775.55110220441, 97955.9118236473, 98136.27254509018, 98316.63326653307, 98496.99398797595, 98677.35470941884, 98857.71543086172, 99038.07615230461, 99218.4368737475, 99398.79759519038, 99579.15831663327, 99759.51903807615, 99939.87975951904, 100120.24048096192, 100300.60120240481, 100480.9619238477, 100661.32264529058, 100841.68336673347, 101022.04408817635, 101202.40480961924, 101382.76553106212, 101563.12625250501, 101743.4869739479, 101923.84769539078, 102104.20841683366, 102284.56913827655, 102464.92985971944, 102645.29058116232, 102825.65130260521, 103006.0120240481, 103186.37274549098, 103366.73346693386, 103547.09418837675, 103727.45490981964, 103907.81563126252, 104088.17635270541, 104268.5370741483, 104448.89779559118, 104629.25851703406, 104809.61923847695, 104989.97995991984, 105170.34068136272, 105350.70140280561, 105531.0621242485, 105711.42284569138, 105891.78356713426, 106072.14428857715, 106252.50501002005, 106432.86573146292, 106613.2264529058, 106793.58717434871, 106973.94789579159, 107154.30861723446, 107334.66933867735, 107515.03006012025, 107695.39078156312, 107875.751503006, 108056.1122244489, 108236.47294589179, 108416.83366733466, 108597.19438877756, 108777.55511022045, 108957.91583166333, 109138.2765531062, 109318.6372745491, 109498.99799599199, 109679.35871743486, 109859.71943887776, 110040.08016032065, 110220.44088176353, 110400.8016032064, 110581.1623246493, 110761.52304609219, 110941.88376753507, 111122.24448897796, 111302.60521042085, 111482.96593186373, 111663.3266533066, 111843.6873747495, 112024.04809619239, 112204.40881763527, 112384.76953907816, 112565.13026052105, 112745.49098196393, 112925.8517034068, 113106.2124248497, 113286.57314629259, 113466.93386773547, 113647.29458917836, 113827.65531062125, 114008.01603206413, 114188.37675350701, 114368.7374749499, 114549.09819639279, 114729.45891783567, 114909.81963927855, 115090.18036072145, 115270.54108216433, 115450.90180360721, 115631.2625250501, 115811.62324649299, 115991.98396793587, 116172.34468937875, 116352.70541082164, 116533.06613226453, 116713.42685370741, 116893.7875751503, 117074.1482965932, 117254.50901803607, 117434.86973947895, 117615.23046092184, 117795.59118236473, 117975.95190380761, 118156.3126252505, 118336.6733466934, 118517.03406813627, 118697.39478957915, 118877.75551102204, 119058.11623246493, 119238.47695390781, 119418.8376753507, 119599.1983967936, 119779.55911823647, 119959.91983967935, 120140.28056112224, 120320.64128256514, 120501.00200400801, 120681.3627254509, 120861.7234468938, 121042.08416833667, 121222.44488977955, 121402.80561122244, 121583.16633266534, 121763.52705410821, 121943.8877755511, 122124.248496994, 122304.60921843688, 122484.96993987975, 122665.33066132265, 122845.69138276554, 123026.05210420841, 123206.41282565129, 123386.7735470942, 123567.13426853708, 123747.49498997995, 123927.85571142285, 124108.21643286574, 124288.57715430862, 124468.9378757515, 124649.29859719439, 124829.65931863728, 125010.02004008016, 125190.38076152305, 125370.74148296594, 125551.10220440882, 125731.4629258517, 125911.82364729459, 126092.18436873748, 126272.54509018036, 126452.90581162325, 126633.26653306614, 126813.62725450902, 126993.9879759519, 127174.34869739479, 127354.70941883768, 127535.07014028056, 127715.43086172345, 127895.79158316634, 128076.15230460922, 128256.5130260521, 128436.87374749499, 128617.23446893788, 128797.59519038076, 128977.95591182365, 129158.31663326654, 129338.67735470942, 129519.0380761523, 129699.39879759519, 129879.75951903808, 130060.12024048096, 130240.48096192385, 130420.84168336674, 130601.20240480962, 130781.5631262525, 130961.92384769539, 131142.28456913828, 131322.64529058116, 131503.00601202404, 131683.36673346694, 131863.72745490982, 132044.0881763527, 132224.44889779558, 132404.80961923848, 132585.17034068136, 132765.53106212424, 132945.89178356715, 133126.25250501002, 133306.6132264529, 133486.9739478958, 133667.33466933868, 133847.69539078156, 134028.05611222444, 134208.41683366732, 134388.77755511022, 134569.1382765531, 134749.49899799598, 134929.8597194389, 135110.22044088176, 135290.58116232464, 135470.94188376755, 135651.30260521043, 135831.6633266533, 136012.0240480962, 136192.38476953906, 136372.74549098196, 136553.10621242487, 136733.46693386772, 136913.82765531063, 137094.1883767535, 137274.54909819638, 137454.9098196393, 137635.27054108217, 137815.63126252504, 137995.99198396795, 138176.35270541083, 138356.7134268537, 138537.0741482966, 138717.43486973946, 138897.79559118237, 139078.15631262524, 139258.51703406812, 139438.87775551103, 139619.2384769539, 139799.59919839678, 139979.9599198397, 140160.32064128257, 140340.68136272545, 140521.04208416835, 140701.40280561123, 140881.7635270541, 141062.124248497, 141242.48496993986, 141422.84569138277, 141603.20641282565, 141783.56713426852, 141963.92785571143, 142144.2885771543, 142324.64929859719, 142505.0100200401, 142685.37074148297, 142865.73146292585, 143046.09218436875, 143226.4529058116, 143406.8136272545, 143587.17434869742, 143767.53507014026, 143947.89579158317, 144128.25651302605, 144308.61723446893, 144488.97795591183, 144669.3386773547, 144849.6993987976, 145030.0601202405, 145210.42084168337, 145390.78156312625, 145571.14228456916, 145751.503006012, 145931.8637274549, 146112.2244488978, 146292.58517034067, 146472.94589178357, 146653.30661322645, 146833.66733466933, 147014.02805611223, 147194.3887775551, 147374.749498998, 147555.1102204409, 147735.47094188377, 147915.83166332665, 148096.19238476956, 148276.5531062124, 148456.9138276553, 148637.2745490982, 148817.63527054107, 148997.99599198397, 149178.35671342685, 149358.71743486973, 149539.07815631264, 149719.4388777555, 149899.7995991984, 150080.1603206413, 150260.52104208415, 150440.88176352705, 150621.24248496996, 150801.6032064128, 150981.96392785572, 151162.3246492986, 151342.68537074147, 151523.04609218438, 151703.40681362725, 151883.76753507013, 152064.12825651304, 152244.48897795592, 152424.8496993988, 152605.2104208417, 152785.57114228455, 152965.93186372746, 153146.29258517036, 153326.6533066132, 153507.01402805612, 153687.374749499, 153867.73547094187, 154048.09619238478, 154228.45691382766, 154408.81763527053, 154589.17835671344, 154769.53907815632, 154949.8997995992, 155130.2605210421, 155310.62124248495, 155490.98196392786, 155671.34268537074, 155851.7034068136, 156032.06412825652, 156212.4248496994, 156392.78557114227, 156573.14629258518, 156753.50701402806, 156933.86773547094, 157114.22845691384, 157294.58917835672, 157474.9498997996, 157655.3106212425, 157835.67134268535, 158016.03206412826, 158196.39278557114, 158376.75350701401, 158557.11422845692, 158737.4749498998, 158917.83567134268, 159098.19639278558, 159278.55711422846, 159458.91783567134, 159639.27855711424, 159819.6392785571, 160000.0])
+              .range(['#ff0000ff', '#ff0000ff', '#ff0100ff', '#ff0200ff', '#ff0300ff', '#ff0400ff', '#ff0500ff', '#ff0600ff', '#ff0700ff', '#ff0800ff', '#ff0900ff', '#ff0a00ff', '#ff0b00ff', '#ff0c00ff', '#ff0d00ff', '#ff0e00ff', '#ff0f00ff', '#ff1000ff', '#ff1100ff', '#ff1200ff', '#ff1300ff', '#ff1400ff', '#ff1500ff', '#ff1600ff', '#ff1700ff', '#ff1800ff', '#ff1900ff', '#ff1a00ff', '#ff1b00ff', '#ff1c00ff', '#ff1d00ff', '#ff1e00ff', '#ff1f00ff', '#ff2000ff', '#ff2100ff', '#ff2200ff', '#ff2300ff', '#ff2400ff', '#ff2500ff', '#ff2600ff', '#ff2700ff', '#ff2800ff', '#ff2900ff', '#ff2a00ff', '#ff2b00ff', '#ff2c00ff', '#ff2d00ff', '#ff2e00ff', '#ff2f00ff', '#ff3000ff', '#ff3100ff', '#ff3200ff', '#ff3300ff', '#ff3400ff', '#ff3500ff', '#ff3600ff', '#ff3700ff', '#ff3800ff', '#ff3900ff', '#ff3a00ff', '#ff3b00ff', '#ff3c00ff', '#ff3d00ff', '#ff3e00ff', '#ff3f00ff', '#ff4000ff', '#ff4100ff', '#ff4200ff', '#ff4300ff', '#ff4400ff', '#ff4500ff', '#ff4600ff', '#ff4700ff', '#ff4800ff', '#ff4900ff', '#ff4a00ff', '#ff4b00ff', '#ff4c00ff', '#ff4d00ff', '#ff4e00ff', '#ff4f00ff', '#ff5000ff', '#ff5100ff', '#ff5200ff', '#ff5300ff', '#ff5400ff', '#ff5500ff', '#ff5600ff', '#ff5700ff', '#ff5800ff', '#ff5900ff', '#ff5a00ff', '#ff5b00ff', '#ff5c00ff', '#ff5d00ff', '#ff5e00ff', '#ff5f00ff', '#ff6000ff', '#ff6100ff', '#ff6200ff', '#ff6300ff', '#ff6400ff', '#ff6500ff', '#ff6600ff', '#ff6700ff', '#ff6800ff', '#ff6900ff', '#ff6a00ff', '#ff6b00ff', '#ff6c00ff', '#ff6d00ff', '#ff6e00ff', '#ff6f00ff', '#ff7000ff', '#ff7100ff', '#ff7200ff', '#ff7300ff', '#ff7400ff', '#ff7500ff', '#ff7600ff', '#ff7700ff', '#ff7800ff', '#ff7900ff', '#ff7a00ff', '#ff7b00ff', '#ff7c00ff', '#ff7d00ff', '#ff7e00ff', '#ff7f00ff', '#ff8000ff', '#ff8100ff', '#ff8200ff', '#ff8300ff', '#ff8400ff', '#ff8500ff', '#ff8600ff', '#ff8700ff', '#ff8800ff', '#ff8900ff', '#ff8a00ff', '#ff8b00ff', '#ff8c00ff', '#ff8d00ff', '#ff8e00ff', '#ff8f00ff', '#ff9000ff', '#ff9100ff', '#ff9200ff', '#ff9300ff', '#ff9400ff', '#ff9500ff', '#ff9600ff', '#ff9700ff', '#ff9800ff', '#ff9900ff', '#ff9a00ff', '#ff9b00ff', '#ff9c00ff', '#ff9d00ff', '#ff9e00ff', '#ff9f00ff', '#ffa000ff', '#ffa100ff', '#ffa200ff', '#ffa300ff', '#ffa400ff', '#ffa500ff', '#ffa600ff', '#ffa600ff', '#ffa700ff', '#ffa700ff', '#ffa800ff', '#ffa800ff', '#ffa900ff', '#ffa900ff', '#ffaa00ff', '#ffaa00ff', '#ffab00ff', '#ffab00ff', '#ffac00ff', '#ffad00ff', '#ffad00ff', '#ffae00ff', '#ffae00ff', '#ffaf00ff', '#ffaf00ff', '#ffb000ff', '#ffb000ff', '#ffb100ff', '#ffb100ff', '#ffb200ff', '#ffb300ff', '#ffb300ff', '#ffb400ff', '#ffb400ff', '#ffb500ff', '#ffb500ff', '#ffb600ff', '#ffb600ff', '#ffb700ff', '#ffb700ff', '#ffb800ff', '#ffb900ff', '#ffb900ff', '#ffba00ff', '#ffba00ff', '#ffbb00ff', '#ffbb00ff', '#ffbc00ff', '#ffbc00ff', '#ffbd00ff', '#ffbd00ff', '#ffbe00ff', '#ffbe00ff', '#ffbf00ff', '#ffc000ff', '#ffc000ff', '#ffc100ff', '#ffc100ff', '#ffc200ff', '#ffc200ff', '#ffc300ff', '#ffc300ff', '#ffc400ff', '#ffc400ff', '#ffc500ff', '#ffc600ff', '#ffc600ff', '#ffc700ff', '#ffc700ff', '#ffc800ff', '#ffc800ff', '#ffc900ff', '#ffc900ff', '#ffca00ff', '#ffca00ff', '#ffcb00ff', '#ffcc00ff', '#ffcc00ff', '#ffcd00ff', '#ffcd00ff', '#ffce00ff', '#ffce00ff', '#ffcf00ff', '#ffcf00ff', '#ffd000ff', '#ffd000ff', '#ffd100ff', '#ffd200ff', '#ffd200ff', '#ffd300ff', '#ffd300ff', '#ffd400ff', '#ffd400ff', '#ffd500ff', '#ffd500ff', '#ffd600ff', '#ffd600ff', '#ffd700ff', '#ffd700ff', '#ffd800ff', '#ffd900ff', '#ffd900ff', '#ffda00ff', '#ffda00ff', '#ffdb00ff', '#ffdb00ff', '#ffdc00ff', '#ffdc00ff', '#ffdd00ff', '#ffdd00ff', '#ffde00ff', '#ffdf00ff', '#ffdf00ff', '#ffe000ff', '#ffe000ff', '#ffe100ff', '#ffe100ff', '#ffe200ff', '#ffe200ff', '#ffe300ff', '#ffe300ff', '#ffe400ff', '#ffe500ff', '#ffe500ff', '#ffe600ff', '#ffe600ff', '#ffe700ff', '#ffe700ff', '#ffe800ff', '#ffe800ff', '#ffe900ff', '#ffe900ff', '#ffea00ff', '#ffea00ff', '#ffeb00ff', '#ffec00ff', '#ffec00ff', '#ffed00ff', '#ffed00ff', '#ffee00ff', '#ffee00ff', '#ffef00ff', '#ffef00ff', '#fff000ff', '#fff000ff', '#fff100ff', '#fff200ff', '#fff200ff', '#fff300ff', '#fff300ff', '#fff400ff', '#fff400ff', '#fff500ff', '#fff500ff', '#fff600ff', '#fff600ff', '#fff700ff', '#fff800ff', '#fff800ff', '#fff900ff', '#fff900ff', '#fffa00ff', '#fffa00ff', '#fffb00ff', '#fffb00ff', '#fffc00ff', '#fffc00ff', '#fffd00ff', '#fffe00ff', '#fffe00ff', '#ffff00ff', '#ffff00ff', '#ffff00ff', '#fdfe00ff', '#fcfe00ff', '#fafd00ff', '#f9fc00ff', '#f7fb00ff', '#f6fb00ff', '#f4fa00ff', '#f3f900ff', '#f1f800ff', '#f0f800ff', '#eef700ff', '#edf600ff', '#ebf500ff', '#e9f500ff', '#e8f400ff', '#e6f300ff', '#e5f200ff', '#e3f100ff', '#e2f100ff', '#e0f000ff', '#dfef00ff', '#ddee00ff', '#dcee00ff', '#daed00ff', '#d9ec00ff', '#d7eb00ff', '#d5eb00ff', '#d4ea00ff', '#d2e900ff', '#d1e800ff', '#cfe700ff', '#cee700ff', '#cce600ff', '#cbe500ff', '#c9e400ff', '#c8e400ff', '#c6e300ff', '#c5e200ff', '#c3e100ff', '#c1e100ff', '#c0e000ff', '#bedf00ff', '#bdde00ff', '#bbde00ff', '#badd00ff', '#b8dc00ff', '#b7db00ff', '#b5da00ff', '#b4da00ff', '#b2d900ff', '#b0d800ff', '#afd700ff', '#add700ff', '#acd600ff', '#aad500ff', '#a9d400ff', '#a7d400ff', '#a6d300ff', '#a4d200ff', '#a3d100ff', '#a1d000ff', '#a0d000ff', '#9ecf00ff', '#9cce00ff', '#9bcd00ff', '#99cd00ff', '#98cc00ff', '#96cb00ff', '#95ca00ff', '#93ca00ff', '#92c900ff', '#90c800ff', '#8fc700ff', '#8dc700ff', '#8cc600ff', '#8ac500ff', '#88c400ff', '#87c300ff', '#85c300ff', '#84c200ff', '#82c100ff', '#81c000ff', '#7fc000ff', '#7ebf00ff', '#7cbe00ff', '#7bbd00ff', '#79bd00ff', '#78bc00ff', '#76bb00ff', '#74ba00ff', '#73b900ff', '#71b900ff', '#70b800ff', '#6eb700ff', '#6db600ff', '#6bb600ff', '#6ab500ff', '#68b400ff', '#67b300ff', '#65b300ff', '#64b200ff', '#62b100ff', '#60b000ff', '#5fb000ff', '#5daf00ff', '#5cae00ff', '#5aad00ff', '#59ac00ff', '#57ac00ff', '#56ab00ff', '#54aa00ff', '#53a900ff', '#51a900ff', '#50a800ff', '#4ea700ff', '#4ca600ff', '#4ba600ff', '#49a500ff', '#48a400ff', '#46a300ff', '#45a200ff', '#43a200ff', '#42a100ff', '#40a000ff', '#3f9f00ff', '#3d9f00ff', '#3c9e00ff', '#3a9d00ff', '#389c00ff', '#379c00ff', '#359b00ff', '#349a00ff', '#329900ff', '#319900ff', '#2f9800ff', '#2e9700ff', '#2c9600ff', '#2b9500ff', '#299500ff', '#289400ff', '#269300ff', '#249200ff', '#239200ff', '#219100ff', '#209000ff', '#1e8f00ff', '#1d8f00ff', '#1b8e00ff', '#1a8d00ff', '#188c00ff', '#178b00ff', '#158b00ff', '#148a00ff', '#128900ff', '#108800ff', '#0f8800ff', '#0d8700ff', '#0c8600ff', '#0a8500ff', '#098500ff', '#078400ff', '#068300ff', '#048200ff', '#038200ff', '#018100ff', '#008000ff']);
+    
+
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.x = d3.scale.linear()
+              .domain([70000.0, 160000.0])
+              .range([0, 450 - 50]);
+
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.legend = L.control({position: 'topright'});
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.legend.addTo(map_8820d69acb1bf077f5bb6365b9026287);
+
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.xAxis = d3.svg.axis()
+        .scale(color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([70000.0, 100000.0, 130000.0, 160000.0]);
+
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.g = color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.svg.append("g")
+        .attr("class", "key")
+        .attr("transform", "translate(25,16)");
+
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.g.selectAll("rect")
+        .data(color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.x(color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.color.domain()[i - 1]) : color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.x.range()[0],
+            x1: i < color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.color.domain().length ? color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.x(color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.color.domain()[i]) : color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.g.call(color_map_82c2038ceaaa9d60ac89d9cf7fa2abe4.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .text("Median Household Income ($70k - $160k)");
+    
+            var circle_bce09263eb84d13111eac90cef0a3a5f = L.circle(
+                [41.908781529011016, -87.65438762641726],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8582.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_d2a8d72241d203650f7703b077eac295 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1f13e546fdba87a1b6d71069987263e6 = $(`<div id="html_1f13e546fdba87a1b6d71069987263e6" style="width: 100.0%; height: 100.0%;">Cluster: 0<br>Population: 17164<br>Median Income: $163,234.74</div>`)[0];
+                popup_d2a8d72241d203650f7703b077eac295.setContent(html_1f13e546fdba87a1b6d71069987263e6);
+            
+        
+
+        circle_bce09263eb84d13111eac90cef0a3a5f.bindPopup(popup_d2a8d72241d203650f7703b077eac295)
+        ;
+
+        
+    
+    
+            var circle_207469f3209aabd9bd2d87ca36d8cc0b = L.circle(
+                [41.93238692471477, -88.1840950173037],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe700ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5770.5, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_4b8953bea0f14fa32744915725fcbf2b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_306c5aceb3aa82415009c6af3c7c6389 = $(`<div id="html_306c5aceb3aa82415009c6af3c7c6389" style="width: 100.0%; height: 100.0%;">Cluster: 1<br>Population: 11541<br>Median Income: $121,721.04</div>`)[0];
+                popup_4b8953bea0f14fa32744915725fcbf2b.setContent(html_306c5aceb3aa82415009c6af3c7c6389);
+            
+        
+
+        circle_207469f3209aabd9bd2d87ca36d8cc0b.bindPopup(popup_4b8953bea0f14fa32744915725fcbf2b)
+        ;
+
+        
+    
+    
+            var circle_2ab5a51ee6c0c4ccf428b70db8db9cad = L.circle(
+                [41.70182888934486, -88.0566728033616],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff100ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5514.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_741a1ffd4dee8bab0ed5e7084187bc0e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5daf2a4981a8b2be7e6ba940e59757cd = $(`<div id="html_5daf2a4981a8b2be7e6ba940e59757cd" style="width: 100.0%; height: 100.0%;">Cluster: 2<br>Population: 11028<br>Median Income: $125,109.44</div>`)[0];
+                popup_741a1ffd4dee8bab0ed5e7084187bc0e.setContent(html_5daf2a4981a8b2be7e6ba940e59757cd);
+            
+        
+
+        circle_2ab5a51ee6c0c4ccf428b70db8db9cad.bindPopup(popup_741a1ffd4dee8bab0ed5e7084187bc0e)
+        ;
+
+        
+    
+    
+            var circle_9585d8478243b352d85a799be85fe3cc = L.circle(
+                [42.094468944236695, -87.82560192145253],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a3d100ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5662.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_d05bb1d6e01fc03142084b3528e9d748 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bdddc37bcee076d9397af45d41072dc2 = $(`<div id="html_bdddc37bcee076d9397af45d41072dc2" style="width: 100.0%; height: 100.0%;">Cluster: 3<br>Population: 11324<br>Median Income: $140,897.39</div>`)[0];
+                popup_d05bb1d6e01fc03142084b3528e9d748.setContent(html_bdddc37bcee076d9397af45d41072dc2);
+            
+        
+
+        circle_9585d8478243b352d85a799be85fe3cc.bindPopup(popup_d05bb1d6e01fc03142084b3528e9d748)
+        ;
+
+        
+    
+    
+            var circle_388c780cb76df5ce8a97c8bef69c273b = L.circle(
+                [41.76647680092544, -87.94836927332682],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3921.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_28b755c6755df3eafda3331403411aea = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_15d72dca85a01bcd408d14edb5d10c95 = $(`<div id="html_15d72dca85a01bcd408d14edb5d10c95" style="width: 100.0%; height: 100.0%;">Cluster: 4<br>Population: 7842<br>Median Income: $161,652.43</div>`)[0];
+                popup_28b755c6755df3eafda3331403411aea.setContent(html_15d72dca85a01bcd408d14edb5d10c95);
+            
+        
+
+        circle_388c780cb76df5ce8a97c8bef69c273b.bindPopup(popup_28b755c6755df3eafda3331403411aea)
+        ;
+
+        
+    
+    
+            var circle_8200d6b7d4c0b95409b06cf93d3c790b = L.circle(
+                [41.835156846975885, -88.07841790432731],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff000ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4422.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_c88757b9548b699eadb014ea635a3587 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a8c43065c83bccc7dab3dff13deb761d = $(`<div id="html_a8c43065c83bccc7dab3dff13deb761d" style="width: 100.0%; height: 100.0%;">Cluster: 5<br>Population: 8844<br>Median Income: $124,727.18</div>`)[0];
+                popup_c88757b9548b699eadb014ea635a3587.setContent(html_a8c43065c83bccc7dab3dff13deb761d);
+            
+        
+
+        circle_8200d6b7d4c0b95409b06cf93d3c790b.bindPopup(popup_c88757b9548b699eadb014ea635a3587)
+        ;
+
+        
+    
+    
+            var circle_3bff683b39ba4b34fc667d7505879209 = L.circle(
+                [42.03075157211642, -87.91969767962749],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffba00ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5995.5, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_ca8aeeadf514c4d8ee9228e69d1b61d0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f612ac467123fe36172adb0464095ab6 = $(`<div id="html_f612ac467123fe36172adb0464095ab6" style="width: 100.0%; height: 100.0%;">Cluster: 6<br>Population: 11991<br>Median Income: $106,874.37</div>`)[0];
+                popup_ca8aeeadf514c4d8ee9228e69d1b61d0.setContent(html_f612ac467123fe36172adb0464095ab6);
+            
+        
+
+        circle_3bff683b39ba4b34fc667d7505879209.bindPopup(popup_ca8aeeadf514c4d8ee9228e69d1b61d0)
+        ;
+
+        
+    
+    
+            var circle_6d345428f65c6978fbb5ab88b1e95450 = L.circle(
+                [42.076055105771445, -88.09345433431992],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e8f400ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9354.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_b6a275f3773ac93624f5572f099bf6eb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3632c71b0c51f814ef21d1926f425dcf = $(`<div id="html_3632c71b0c51f814ef21d1926f425dcf" style="width: 100.0%; height: 100.0%;">Cluster: 7<br>Population: 18708<br>Median Income: $132,758.82</div>`)[0];
+                popup_b6a275f3773ac93624f5572f099bf6eb.setContent(html_3632c71b0c51f814ef21d1926f425dcf);
+            
+        
+
+        circle_6d345428f65c6978fbb5ab88b1e95450.bindPopup(popup_b6a275f3773ac93624f5572f099bf6eb)
+        ;
+
+        
+    
+    
+            var circle_b9de585054624f774a3f855eead16ae1 = L.circle(
+                [41.88262795407315, -87.82636304166601],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d0e800ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 1057.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_20f2f1aebf4e9048314128bfda7316f6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_40d0bac45dedcaa4e7a5ee44652c3862 = $(`<div id="html_40d0bac45dedcaa4e7a5ee44652c3862" style="width: 100.0%; height: 100.0%;">Cluster: 8<br>Population: 2114<br>Median Income: $135,601.72</div>`)[0];
+                popup_20f2f1aebf4e9048314128bfda7316f6.setContent(html_40d0bac45dedcaa4e7a5ee44652c3862);
+            
+        
+
+        circle_b9de585054624f774a3f855eead16ae1.bindPopup(popup_20f2f1aebf4e9048314128bfda7316f6)
+        ;
+
+        
+    
+    
+            var circle_4d2a92028f98140d6ea749e9b96d2236 = L.circle(
+                [41.827024701850426, -87.63527748820945],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff2500ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2619.5, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_d7f3ed7a70715358b4473d3ccf14e254 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8ad07b8c3118b00cad32bb5baca83c1f = $(`<div id="html_8ad07b8c3118b00cad32bb5baca83c1f" style="width: 100.0%; height: 100.0%;">Cluster: 9<br>Population: 5239<br>Median Income: $76,860.32</div>`)[0];
+                popup_d7f3ed7a70715358b4473d3ccf14e254.setContent(html_8ad07b8c3118b00cad32bb5baca83c1f);
+            
+        
+
+        circle_4d2a92028f98140d6ea749e9b96d2236.bindPopup(popup_d7f3ed7a70715358b4473d3ccf14e254)
+        ;
+
+        
+    
+    
+            var circle_27d7379bb3a3a1b069b23ec513a2b558 = L.circle(
+                [41.62671205331244, -87.84955291376953],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fff600ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2095.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_0e4cc7aca1a2b3741c2da66b80750ec0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c8381a24fdb2688a3c2bdcd59cca84dd = $(`<div id="html_c8381a24fdb2688a3c2bdcd59cca84dd" style="width: 100.0%; height: 100.0%;">Cluster: 10<br>Population: 4190<br>Median Income: $126,907.46</div>`)[0];
+                popup_0e4cc7aca1a2b3741c2da66b80750ec0.setContent(html_c8381a24fdb2688a3c2bdcd59cca84dd);
+            
+        
+
+        circle_27d7379bb3a3a1b069b23ec513a2b558.bindPopup(popup_0e4cc7aca1a2b3741c2da66b80750ec0)
+        ;
+
+        
+    
+    
+            var circle_78cff0669a53752ab311f7b0c540ed12 = L.circle(
+                [42.05573667083499, -87.72526437372198],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffe600ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5798.5, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_693b9acf061ffa9873653f2b0bb7a75e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b3fdb24af3ed71df51af82b68477bde1 = $(`<div id="html_b3fdb24af3ed71df51af82b68477bde1" style="width: 100.0%; height: 100.0%;">Cluster: 11<br>Population: 11597<br>Median Income: $121,372.97</div>`)[0];
+                popup_693b9acf061ffa9873653f2b0bb7a75e.setContent(html_b3fdb24af3ed71df51af82b68477bde1);
+            
+        
+
+        circle_78cff0669a53752ab311f7b0c540ed12.bindPopup(popup_693b9acf061ffa9873653f2b0bb7a75e)
+        ;
+
+        
+    
+    
+            var circle_180bf1c4414d240ab6f022cbc792bb23 = L.circle(
+                [41.973660029843764, -87.69417213592966],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff8a00ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9789.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_dfed609a2a39886593a24409db676a06 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_093ffb02b75bd00878a47d227bed1c0c = $(`<div id="html_093ffb02b75bd00878a47d227bed1c0c" style="width: 100.0%; height: 100.0%;">Cluster: 12<br>Population: 19578<br>Median Income: $95,070.84</div>`)[0];
+                popup_dfed609a2a39886593a24409db676a06.setContent(html_093ffb02b75bd00878a47d227bed1c0c);
+            
+        
+
+        circle_180bf1c4414d240ab6f022cbc792bb23.bindPopup(popup_dfed609a2a39886593a24409db676a06)
+        ;
+
+        
+    
+    
+            var circle_22f38d44b9cd16ea793f7fb45d4a7b25 = L.circle(
+                [41.62165208574114, -88.16943726479313],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffff00ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2331.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_c6e4ae10a93c6842db76ad869864fb48 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9350542607c48d5dbedf1ba938f82392 = $(`<div id="html_9350542607c48d5dbedf1ba938f82392" style="width: 100.0%; height: 100.0%;">Cluster: 13<br>Population: 4662<br>Median Income: $129,976.68</div>`)[0];
+                popup_c6e4ae10a93c6842db76ad869864fb48.setContent(html_9350542607c48d5dbedf1ba938f82392);
+            
+        
+
+        circle_22f38d44b9cd16ea793f7fb45d4a7b25.bindPopup(popup_c6e4ae10a93c6842db76ad869864fb48)
+        ;
+
+        
+    
+    
+            var circle_2423fd71daffb9de2f09a9d8bb22a9ac = L.circle(
+                [41.987589073895414, -87.80061334224456],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffee00ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2487.5, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_f8915c2d9fbac860aceb6a1493d806cd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e4223c5b439fe4bbedc4cf2b492c0e97 = $(`<div id="html_e4223c5b439fe4bbedc4cf2b492c0e97" style="width: 100.0%; height: 100.0%;">Cluster: 14<br>Population: 4975<br>Median Income: $124,099.26</div>`)[0];
+                popup_f8915c2d9fbac860aceb6a1493d806cd.setContent(html_e4223c5b439fe4bbedc4cf2b492c0e97);
+            
+        
+
+        circle_2423fd71daffb9de2f09a9d8bb22a9ac.bindPopup(popup_f8915c2d9fbac860aceb6a1493d806cd)
+        ;
+
+        
+    
+    
+            var circle_2567d192452e855fc9d9b14802240cec = L.circle(
+                [42.115212570005355, -87.95364586135388],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffbb00ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4491.5, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_72d7b1bb4887371d92c8bf69baa5da99 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_82cc5661704519db35c6f2611c0004ab = $(`<div id="html_82cc5661704519db35c6f2611c0004ab" style="width: 100.0%; height: 100.0%;">Cluster: 15<br>Population: 8983<br>Median Income: $107,411.78</div>`)[0];
+                popup_72d7b1bb4887371d92c8bf69baa5da99.setContent(html_82cc5661704519db35c6f2611c0004ab);
+            
+        
+
+        circle_2567d192452e855fc9d9b14802240cec.bindPopup(popup_72d7b1bb4887371d92c8bf69baa5da99)
+        ;
+
+        
+    
+    
+            var circle_43d1932302e8643fb7e297a6afdcfd48 = L.circle(
+                [41.867661168953276, -87.96296423589519],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#eaf500ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 2811.0, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_3c4e51632b5a5190acccbf5cbf95df66 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c88ab25b5d3741d07741d5f123a39be1 = $(`<div id="html_c88ab25b5d3741d07741d5f123a39be1" style="width: 100.0%; height: 100.0%;">Cluster: 16<br>Population: 5622<br>Median Income: $132,567.57</div>`)[0];
+                popup_3c4e51632b5a5190acccbf5cbf95df66.setContent(html_c88ab25b5d3741d07741d5f123a39be1);
+            
+        
+
+        circle_43d1932302e8643fb7e297a6afdcfd48.bindPopup(popup_3c4e51632b5a5190acccbf5cbf95df66)
+        ;
+
+        
+    
+    
+            var circle_e052eff9b7b4004ed84e806ff5a2ff90 = L.circle(
+                [41.759661780592744, -88.20229485680748],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#62b100ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13712.5, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_ca3809ae400838ecbfc67301f6547874 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d3b86f58ce472533069aee84c0907b89 = $(`<div id="html_d3b86f58ce472533069aee84c0907b89" style="width: 100.0%; height: 100.0%;">Cluster: 17<br>Population: 27425<br>Median Income: $148,513.11</div>`)[0];
+                popup_ca3809ae400838ecbfc67301f6547874.setContent(html_d3b86f58ce472533069aee84c0907b89);
+            
+        
+
+        circle_e052eff9b7b4004ed84e806ff5a2ff90.bindPopup(popup_ca3809ae400838ecbfc67301f6547874)
+        ;
+
+        
+    
+    
+            var circle_37555cee686ab800695a30b94aacfb3d = L.circle(
+                [41.96050011889209, -88.0413515546374],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffcf00ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3900.5, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_6243fed6b849ac8730b5c519475b34bc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ae15a5fdd85857c089be90629b044023 = $(`<div id="html_ae15a5fdd85857c089be90629b044023" style="width: 100.0%; height: 100.0%;">Cluster: 18<br>Population: 7801<br>Median Income: $113,760.30</div>`)[0];
+                popup_6243fed6b849ac8730b5c519475b34bc.setContent(html_ae15a5fdd85857c089be90629b044023);
+            
+        
+
+        circle_37555cee686ab800695a30b94aacfb3d.bindPopup(popup_6243fed6b849ac8730b5c519475b34bc)
+        ;
+
+        
+    
+    
+            var circle_016bc2c821b4c58e7c62043d4a58a663 = L.circle(
+                [42.06298509598004, -88.19375714861972],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffc200ff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6616.5, "stroke": true, "weight": 3}
+            ).addTo(map_8820d69acb1bf077f5bb6365b9026287);
+        
+    
+        var popup_383634b300ed48975dd05ca8c4b9aed3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c25d6d0a3a9d93b082213c0cbb6d6337 = $(`<div id="html_c25d6d0a3a9d93b082213c0cbb6d6337" style="width: 100.0%; height: 100.0%;">Cluster: 19<br>Population: 13233<br>Median Income: $109,542.68</div>`)[0];
+                popup_383634b300ed48975dd05ca8c4b9aed3.setContent(html_c25d6d0a3a9d93b082213c0cbb6d6337);
+            
+        
+
+        circle_016bc2c821b4c58e7c62043d4a58a663.bindPopup(popup_383634b300ed48975dd05ca8c4b9aed3)
+        ;
+
+        
+    
+</script>
+</html>
